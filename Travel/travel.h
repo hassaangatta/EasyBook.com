@@ -5,7 +5,7 @@ class Travel{
         char from[15],whereTo[15],when[10];
         int quant;
     public:
-        void input ()
+        virtual void input ()
         {
             cout<<"From? :";
             cin>>from;
@@ -13,6 +13,5 @@ class Travel{
             cin>>whereTo;
             cout<<"When? (Date format mm/dd/yyyy):";
             cin>>when;
-        }
-        
+        }  
 };
