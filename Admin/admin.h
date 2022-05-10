@@ -191,4 +191,66 @@ class admin {
             myfile.close();
             b.FileWrite(ID,name,time,rs,noOfSeats,features);
         }
+        void residenceadd ()
+        {
+            r.input(2);
+            int ID;
+            string name,adderess,type,features,rating,price;
+            cout<<"Enter Hotel/Guest House name: ";
+            fflush(stdin);
+            getline(cin,name);
+            cout<<"Enter Adderess: ";
+            fflush(stdin);
+            getline(cin,adderess);
+            cout<<"Enter Type: ";
+            fflush(stdin);
+            getline(cin,type);
+            cout<<"Enter Features with space in between them : ";
+            fflush(stdin);
+            getline(cin,features);
+            cout<<"Enter current rating from google: ";
+            fflush(stdin);
+            getline(cin,rating);
+            cout<<"Enter Price per night: ";
+            fflush(stdin);
+            getline(cin,price);
+            r.creatFileName();
+            ifstream myfile ;
+            myfile.open(r.getfilename());
+            if (myfile.fail())
+            {
+                ofstream file;
+                file.open(r.getfilename());
+                file.close();
+                myfile.open(r.getfilename());
+            }
+            string str;
+            int count=0;
+            while (!myfile.eof())
+            {
+                for (int i=0;i<9;i++)
+                {
+                    getline(myfile,str);
+                    if (i==0)
+                    {
+                        if (str.empty())
+                        {   
+                            if (count==0)
+                            ID=5000;
+                            else 
+                            continue;
+                        }
+                        else 
+                        {
+                            count++;
+                            ID=stoi(str);
+                            ID++;
+                        }
+                    }
+
+                }
+            }
+            myfile.close();
+            r.FileWrite(ID,name,adderess,type,features,rating,price);
+        }
 };

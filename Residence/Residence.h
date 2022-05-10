@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <fstream>
 #include <stdlib.h>
 using namespace std;
 class Residence{
@@ -18,12 +19,23 @@ class Residence{
             cin>>checkOUT;
             cout<<"Number of Guests: ";
             cin>>noOfGuests;
-        }  
+        }
+        void input (int)
+        {
+            cout<<"Enter City: ";
+            cin>>where;
+            cout<<"Number of Guests: ";
+            cin>>noOfGuests;
+        }
         void creatFileName ()
         {
             strcat(fileName,where);
             strcat(fileName,".txt");
             cout<<fileName<<endl;
+        }
+        string getfilename()
+        {
+            return fileName;
         }
         void FileRead ()
         {
@@ -35,21 +47,36 @@ class Residence{
             }
             while (!myfile.eof())
             {
-                string text[8];
+                string text[9];
                 for (int i=0;i<8;i++)
                 {
                     getline(myfile,text[i]);
                     //cout<<text[i]<<endl;
                 }
                 cout<<endl;
-                if (text[3][0]==noOfGuests)
+                if (text[4][0]==noOfGuests)
                 {
-                    for (int i=0;i<7;i++)
+                    for (int i=0;i<8;i++)
                     {
                         cout<<text[i]<<endl;
                     }
                     cout<<endl;
                 }
             }
+        }
+        void FileWrite (int ID,string name,string adderess,string type,string features,string rating ,string price )
+        {
+            ofstream myfile;
+            myfile.open(fileName,ios_base::app);
+            myfile<<ID<<endl;
+            myfile<<name<<endl;
+            myfile<<adderess<<endl;
+            myfile<<type<<endl;
+            myfile<<noOfGuests<<" Guests"<<endl;
+            myfile<<features<<endl;
+            myfile<<rating<<endl;
+            myfile<<price<<endl;
+            myfile<<""<<endl;
+            myfile.close();
         }
 };

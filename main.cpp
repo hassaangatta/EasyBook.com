@@ -24,5 +24,6 @@ int main ()
     admin a;
     // a.flightadd();
     // a.trainadd();
-    a.busadd();
+    // a.busadd();
+    a.residenceadd();
 }

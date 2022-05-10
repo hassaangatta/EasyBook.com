@@ -1,3 +1,4 @@
+5000
 Pearl Continental
 PL 123,sharah-e-Faisal
 VIP suit 
@@ -6,6 +7,7 @@ complementary breakfast swiming pool free cancelation
 ****
 22000
 05/21/2022 05/22/2022
+5001
 Ramada
 PL 123,sharah-e-Quaidenn
 3 bed 
@@ -14,3 +16,21 @@ complementary breakfast free cancelation
 *****
 25000
 05/26/2022 05/21/2022 05/22/2022 05/23/2022
+5002
+faisal house
+street 3,DHA
+Suit
+2 Guests
+Breakfast
+***
+6000
+
+5003
+home rana
+mehmood ave,abdullah haroon road.
+suit
+2 Guests
+pool breakfast
+***
+10000
+
