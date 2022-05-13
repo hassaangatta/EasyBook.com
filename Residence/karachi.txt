@@ -24,7 +24,7 @@ Suit
 Breakfast
 ***
 6000
-
+05/24/2022 05/23/2022
 5003
 home rana
 mehmood ave,abdullah haroon road.
@@ -33,4 +33,49 @@ suit
 pool breakfast
 ***
 10000
-
+05/26/2022 05/17/2022
+5004
+PC
+pata nahi
+VIP
+4 Guests
+pool
+***
+100000
+05/26/2022 05/21/2022
+5005
+PC
+north karachi
+VIP
+2 Guests
+pool breakfast free juice
+****
+20000
+05/13/2022
+5006
+Ramada
+shahar e faisal
+Luxuary
+3 Guests
+Pool BreakFast Bar
+***
+30000
+05/13/2022
+5007
+Homeland
+gulshan e hadeed
+triple bed
+3 Guests
+breakfast
+****
+5000
+05/13/2022
+5008
+guest home
+sharah e quaideen
+appartment
+2 Guests
+breakfast centeral ac
+****
+6000
+05/13/2022

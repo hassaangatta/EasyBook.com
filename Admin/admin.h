@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string.h>
+#include <cstdio>
+#include <string>
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
@@ -252,5 +254,56 @@ class admin {
             }
             myfile.close();
             r.FileWrite(ID,name,adderess,type,features,rating,price);
+        }
+        void residencedelete ()
+        {
+            int ID;
+            string city;
+            cout<<"Enter City: ";
+            fflush(stdin);
+            getline(cin,city);
+            r.creatFileName(city);
+            ifstream myfile ;
+            myfile.open(r.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"No City is present."<<endl;
+            }
+            else 
+            {
+                while (myfile)
+                {
+                    string text[9];
+                    for (int i=0;i<9;i++)
+                    {
+                        getline(myfile,text[i]);
+                    }
+                    for (int i=0;i<8;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }
+            cout<<"Enter ID of Residence you want to delete: ";
+            cin>>ID;
+            ofstream file;
+            file.open("temp.txt");
+            while (myfile)
+            {
+                string text[9];
+                for (int i=0;i<9;i++)
+                {
+                    getline(myfile,text[i]);
+                }
+                int d=stoi(text[0]);
+                if (d!=ID)
+                {
+                    for (int i=0;i<9;i++)
+                    {
+                        file<<text[i];
+                    }
+                }
+            }
         }
 };
