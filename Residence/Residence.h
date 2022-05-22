@@ -10,6 +10,8 @@ class Residence{
         char where[15],checkINN[10],checkOUT[10];
         char noOfGuests;
         char fileName [50]="D:\\EasyBook.com\\Residence\\";
+        string bookId;
+        int price;
     public:
         bool comparison (string given,string checkInn ,string checkOut);
 		string todaysDate();
@@ -23,6 +25,7 @@ class Residence{
             cin>>checkOUT;
             cout<<"Number of Guests: ";
             cin>>noOfGuests;
+            createFileName();
         }
         void input (int)
         {
@@ -31,12 +34,13 @@ class Residence{
             cout<<"Number of Guests: ";
             cin>>noOfGuests;
         }
-        void creatFileName ()
+        void createFileName ()
         {
             strcat(fileName,where);
             strcat(fileName,".txt");
+            FileRead();
         }
-		void creatFileName (string city)
+		void creatFileName (char city[20])
         {
             strcat(fileName,city);
             strcat(fileName,".txt");
@@ -70,7 +74,40 @@ class Residence{
                     cout<<endl;
                 }
             }
+            book();
         }
+        void book(){
+        	int chk;
+        	string ch,line;
+        	string CIM , CID , CIY , COM , COD , COY;
+        	cout<<"ENTER ID TO BOOK ELSE ENTER 0 TO EXIT: ";
+        	cin>>ch;
+        	if(ch != "0"){
+        		fstream booking;
+        	booking.open(fileName);
+        	while(!booking.eof() && line != ch){
+        		getline(booking,line);
+			}
+			bookId = line;
+			system("cls");
+			for(int i=0;i<6;i++){
+				getline(booking,line);
+				cout<<line;
+				if(i==4){
+					price = stoi(line);
+				}
+			}
+			cout<<"CHECK INN DATE: "<<checkINN<<endl;
+			cout<<"CHECK OUT DATE: "<<checkOUT<<endl;
+			cout<<endl<<endl;
+			cout<<"PRESS 1 TO CONFIRM BOOKING: ";
+			cin>>chk;
+			if(chk == 1){
+				cout<<"FINAL BILL: "<<price;
+			}
+			booking.close();	
+			}
+		}
         void FileWrite (int ID,string name,string adderess,string type,string features,string rating ,string price )
         {
             ofstream myfile;

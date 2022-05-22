@@ -10,7 +10,7 @@ Daewoo Express
 05/15/2022
 7:20 pm
 8000
-30
+20
 AC,Lunch,Tea
 3002
 Waraich Express
@@ -26,10 +26,9 @@ waraich Express
 3000
 35
 Non AC refreshments
-3004
-faisal movers
-04/23/2022
-5:00 pm
-4500
-50
-refreshments
+
+
+
+
+
+

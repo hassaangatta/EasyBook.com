@@ -3,7 +3,7 @@ Sir Syed Express
 05/14/2022
 3:30 pm
 8000
-20
+13
 First Class
 Lunch,Tea,Dinner
 2001
@@ -11,15 +11,15 @@ Jinnah Express
 06/25/2022
 8:00 pm
 5000
-50
+33
 Economy Class
 Tea
 2002
 Jinnah Express 
-06/30/2022
+06/23/2022
 9:00 am
 7000
-20
+8
 First Class
 Lunch,Tea,Dinner
 2003
@@ -35,6 +35,42 @@ Jinnah
 06/23/2022
 5:00 pm
 5000
-45
-Buisness
+21
+First Class
 breakfast tea water non AC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

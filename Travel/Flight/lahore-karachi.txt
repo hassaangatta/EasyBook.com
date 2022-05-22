@@ -3,7 +3,7 @@ PIA
 02/13/2022
 2:30 pm
 50000
-40
+37
 First
 lunch 
 1001
@@ -19,7 +19,7 @@ Air Sial
 07/26/2022
 5:00 pm
 45000
-30
+37
 Economy
 window
 1000
@@ -27,7 +27,7 @@ PIA
 04/30/2022
 5:00 pm
 50000
-30
+37
 Economy
 water juice snack
 1000
@@ -35,7 +35,7 @@ Jinnah Air
 05/23/2022
 6:00 am
 50000
-40
+37
 First
 breakfast
 1000
@@ -43,7 +43,7 @@ PIA
 03/30
 7:00 am
 30000
-60
+37
 Economy
 water
 1000
@@ -51,7 +51,7 @@ Air blue
 04/30/2022
 5:00 pm
 45000
-40
+37
 Buisnes
 juice
 1000
@@ -59,7 +59,7 @@ Fly Jinnah
 06/14/2022
 7:00 am
 45000
-45
+37
 First
 breakfast tea 
 1000
@@ -67,7 +67,7 @@ Air Blue
 04/23/2022
 7:00 pm
 70000
-30
+37
 Buisnes
 dinner
 1001
@@ -86,3 +86,5 @@ Air Blue
 40
 Economy
 water refreshments
+
+

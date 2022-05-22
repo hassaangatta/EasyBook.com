@@ -3,7 +3,7 @@ Pakistan International Airline (PIA)
 05/22/2022
 3:30 pm
 80000
-30
+18
 First Class
 Lunch,Tea
 1006
@@ -11,8 +11,8 @@ Pakistan International Airline (PIA)
 05/22/2022
 3:30 pm
 50000
-50
-Economy Class
+45
+First Class
 Lunch,Tea
 1007
 Pakistan International Airline (PIA) 
@@ -27,7 +27,7 @@ Sareen Air
 06/05/2022
 5:00 pm
 40000
-30
+26
 Buisness Class
 tea snacks
 1000
@@ -35,7 +35,7 @@ Air Blue
 08/02/2022
 6:45 pm
 30000
-50
+26
 Economy Class
 snacks water
 1000
@@ -43,7 +43,7 @@ PIA
 06/17/2022
 3:00 pm
 400000
-50
+26
 Economy Class
 lunch water
 1000
@@ -51,7 +51,7 @@ Air Blue
 05/07/2022
 4:00 pm
 40000
-50
+26
 Economy Clas
 snacks tea water
 1000
@@ -59,7 +59,7 @@ any air
 03/14/2022
 6:00 am
 30000
-30
+26
 Bisness
 water
 1001
@@ -70,3 +70,17 @@ PIA
 40
 Economy
 water
+
+
+
+
+
+
+
+
+
+
+
+
+
+
