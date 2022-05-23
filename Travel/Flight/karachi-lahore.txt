@@ -22,6 +22,7 @@ Pakistan International Airline (PIA)
 30
 First Class
 Lunch,Tea
+<<<<<<< Updated upstream
 1000
 Sareen Air
 06/05/2022
@@ -62,11 +63,13 @@ any air
 26
 Bisness
 water
+=======
+>>>>>>> Stashed changes
 1001
 PIA
 06/14/2022
 7:00 am
-45000
+40000
 40
 Economy
 water

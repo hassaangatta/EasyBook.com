@@ -7,6 +7,7 @@ class Travel{
         string type,bookId;
         //char fileName [50]="D:\\EasyBook.com\\Travel\\Train\\";
     public:
+<<<<<<< Updated upstream
     	int getSeat(){
     		return seats;
 		}
@@ -25,4 +26,7 @@ class Travel{
             cin>>when;
         }
 		  
+=======
+        virtual void input ()=0;  
+>>>>>>> Stashed changes
 };

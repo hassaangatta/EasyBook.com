@@ -257,53 +257,730 @@ class admin {
         }
         void residencedelete ()
         {
-            int ID;
-            string city;
-            cout<<"Enter City: ";
-            fflush(stdin);
-            getline(cin,city);
-            r.creatFileName(city);
-            ifstream myfile ;
+            r.input('c');
+            string ID;
+            r.creatFileName();
+            ifstream myfile;
             myfile.open(r.getfilename());
             if (myfile.fail())
             {
-                cout<<"No City is present."<<endl;
+                cout<<"Error"<<endl;
             }
-            else 
+            while (!myfile.eof())
             {
-                while (myfile)
+                string text[9];
+                for (int i=0;i<9;i++)
                 {
-                    string text[9];
-                    for (int i=0;i<9;i++)
-                    {
-                        getline(myfile,text[i]);
-                    }
+                    getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
                     for (int i=0;i<8;i++)
                     {
                         cout<<text[i]<<endl;
                     }
                     cout<<endl;
                 }
-            }
-            cout<<"Enter ID of Residence you want to delete: ";
+            }    
+            myfile.close();
+            cout<<"Enter ID of hotel/guest house you want to delete: ";
             cin>>ID;
-            ofstream file;
-            file.open("temp.txt");
-            while (myfile)
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(r.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[9];
+                for (int i=0;i<9;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="" && text[0]!=ID)
+                {
+                    for (int i=0;i<9;i++)
+                    {
+                        tempfile<<text[i]<<endl;
+                    }
+                }
+            }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(r.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(r.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[9];
+                for (int i=0;i<9;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<9;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");
+        }
+        void flightdelete()
+        {
+            f.input(7);
+            f.creatFileName(); 
+            string ID;
+            ifstream myfile;
+            myfile.open(f.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while (!myfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<7;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }    
+            myfile.close();
+            cout<<"Enter ID of flight you want to delete: ";
+            cin>>ID;
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(f.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="" && text[0]!=ID)
+                {
+                    for (int i=0;i<8;i++)
+                    {
+                        tempfile<<text[i]<<endl;
+                    }
+                }
+            }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(f.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(f.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<8;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");  
+        }
+        void traindelete()
+        {
+            t.input(7);
+            t.creatFileName(); 
+            string ID;
+            ifstream myfile;
+            myfile.open(t.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while (!myfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<7;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }    
+            myfile.close();
+            cout<<"Enter ID of train you want to delete: ";
+            cin>>ID;
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(t.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="" && text[0]!=ID)
+                {
+                    for (int i=0;i<8;i++)
+                    {
+                        tempfile<<text[i]<<endl;
+                    }
+                }
+            }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(t.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(t.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<8;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");  
+        }
+        void busdelete()
+        {
+            b.input(7);
+            b.creatFileName(); 
+            string ID;
+            ifstream myfile;
+            myfile.open(b.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while (!myfile.eof())
+            {
+                string text[7];
+                for (int i=0;i<7;i++)
+                {
+                    getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<6;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }    
+            myfile.close();
+            cout<<"Enter ID of bus you want to delete: ";
+            cin>>ID;
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(b.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[7];
+                for (int i=0;i<7;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="" && text[0]!=ID)
+                {
+                    for (int i=0;i<7;i++)
+                    {
+                        tempfile<<text[i]<<endl;
+                    }
+                }
+            }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(b.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(b.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[7];
+                for (int i=0;i<7;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<7;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");  
+        }
+        void residencePriceUpdate()
+        {
+            r.input('c');
+            string ID,price;
+            r.creatFileName();
+            ifstream myfile;
+            myfile.open(r.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while (!myfile.eof())
             {
                 string text[9];
                 for (int i=0;i<9;i++)
                 {
                     getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
                 }
-                int d=stoi(text[0]);
-                if (d!=ID)
+                if (text[0]!="")
                 {
+                    for (int i=0;i<8;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }    
+            myfile.close();
+            cout<<"Enter ID of hotel/guest house for which you want to update price: ";
+            cin>>ID;
+            cout<<"Enter New price: ";
+            cin>>price;
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(r.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[9];
+                for (int i=0;i<9;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    if (text[0]==ID)
+                    {
+                        text[7]=price;
+                    }
                     for (int i=0;i<9;i++)
                     {
-                        file<<text[i];
+                        tempfile<<text[i]<<endl;
                     }
                 }
             }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(r.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(r.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[9];
+                for (int i=0;i<9;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<9;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");
+        }
+        void flightPriceUpdate()
+        {
+            f.input(7);
+            f.creatFileName(); 
+            string ID,price;
+            ifstream myfile;
+            myfile.open(f.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while (!myfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<7;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }    
+            myfile.close();
+            cout<<"Enter ID of flight for which you want to update price: ";
+            cin>>ID;
+            cout<<"Enter Updated Price: ";
+            cin>>price;
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(f.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    if (text[0]==ID)
+                    {
+                        text[4]=price;
+                    }
+                    for (int i=0;i<8;i++)
+                    {
+                        tempfile<<text[i]<<endl;
+                    }
+                }
+            }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(f.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(f.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<8;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");  
+        }
+        void trainPriceUpdate()
+        {
+            t.input(7);
+            t.creatFileName(); 
+            string ID,price;
+            ifstream myfile;
+            myfile.open(t.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while (!myfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<7;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }    
+            myfile.close();
+            cout<<"Enter ID of train for which you want to update price : ";
+            cin>>ID;
+            cout<<"Enter Updated Price: ";
+            cin>>price;
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(t.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    if (text[0]==ID)
+                    {
+                        text[4]=price;
+                    }
+                    for (int i=0;i<8;i++)
+                    {
+                        tempfile<<text[i]<<endl;
+                    }
+                }
+            }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(t.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(t.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[8];
+                for (int i=0;i<8;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<8;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");  
+        }
+        void busPriceUpdate()
+        {
+            b.input(7);
+            b.creatFileName(); 
+            string ID,price;
+            ifstream myfile;
+            myfile.open(b.getfilename());
+            if (myfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while (!myfile.eof())
+            {
+                string text[7];
+                for (int i=0;i<7;i++)
+                {
+                    getline(myfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<6;i++)
+                    {
+                        cout<<text[i]<<endl;
+                    }
+                    cout<<endl;
+                }
+            }    
+            myfile.close();
+            cout<<"Enter ID of bus for which you want to update price: ";
+            cin>>ID;
+            cout<<"Enter Updated Price: ";
+            cin>>price;
+            ofstream tempfile;
+            tempfile.open("temp.txt");
+            ifstream currfile;
+            currfile.open(b.getfilename());
+            if (currfile.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!currfile.eof())
+            {
+                string text[7];
+                for (int i=0;i<7;i++)
+                {
+                    getline(currfile,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    if (text[0]==ID)
+                    {
+                        text[4]=price;
+                    }
+                    for (int i=0;i<7;i++)
+                    {
+                        tempfile<<text[i]<<endl;
+                    }
+                }
+            }
+            tempfile.close();
+            currfile.close();
+            fstream file;
+            file.open(b.getfilename(),ios::trunc);
+            file.close();
+            ofstream file1;
+            file1.open(b.getfilename());
+            ifstream file2;
+            file2.open("temp.txt");
+            if (file2.fail())
+            {
+                cout<<"Error"<<endl;
+            }
+            while(!file2.eof())
+            {
+                string text[7];
+                for (int i=0;i<7;i++)
+                {
+                    getline(file2,text[i]);
+                    //cout<<text[i]<<endl;
+                }
+                if (text[0]!="")
+                {
+                    for (int i=0;i<7;i++)
+                    {
+                        file1<<text[i]<<endl;
+                    }
+                }
+            }
+            file1.close();
+            file2.close();
+            remove("temp.txt");  
         }
 };

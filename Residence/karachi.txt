@@ -25,15 +25,6 @@ Breakfast
 ***
 6000
 05/24/2022 05/23/2022
-5003
-home rana
-mehmood ave,abdullah haroon road.
-suit
-2 Guests
-pool breakfast
-***
-10000
-05/26/2022 05/17/2022
 5004
 PC
 pata nahi
@@ -43,15 +34,6 @@ pool
 ***
 100000
 05/26/2022 05/21/2022
-5005
-PC
-north karachi
-VIP
-2 Guests
-pool breakfast free juice
-****
-20000
-05/13/2022
 5006
 Ramada
 shahar e faisal
@@ -68,14 +50,30 @@ triple bed
 3 Guests
 breakfast
 ****
-5000
+7000
 05/13/2022
-5008
-guest home
-sharah e quaideen
-appartment
+5009
+Pearl continental
+sharah e faisal
+simple room
 2 Guests
+<<<<<<< Updated upstream
 breakfast centeral ac
 ****
 6000
 05/13/2022
+=======
+view
+***
+15000
+05/22/2022
+5010
+Ramada
+pata nahi
+vip
+2 Guests
+pool
+**
+7000
+05/22/2022
+>>>>>>> Stashed changes

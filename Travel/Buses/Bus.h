@@ -6,6 +6,22 @@ class Bus: public Travel
     protected:
         char fileName [50] = "D:\\EasyBook.com\\Travel\\Buses\\";
     public:
+		void input ()
+        {
+            cout<<"From? :";
+            cin>>from;
+            cout<<"Where? :";
+            cin>>whereTo;
+            cout<<"When? (Date format mm/dd/yyyy):";
+            cin>>when;
+        }
+		void input (int)
+        {
+            cout<<"From? :";
+            cin>>from;
+            cout<<"Where? :";
+            cin>>whereTo;
+        }
 		string getfilename ()
         {
             return fileName;

@@ -16,7 +16,30 @@ class Train: public Travel
         {
             return fileName;
         }
+<<<<<<< Updated upstream
         void createFileName ()
+=======
+        void input ()
+        {
+            cout<<"From? :";
+            cin>>from;
+            cout<<"Where? :";
+            cin>>whereTo;
+            cout<<"When? (Date format mm/dd/yyyy):";
+            cin>>when;
+            cout<<"Select Class(Economy/Buisness/First):";
+            fflush(stdin);
+            getline(cin,type);
+        }
+        void input (int)
+        {
+            cout<<"From? :";
+            cin>>from;
+            cout<<"Where? :";
+            cin>>whereTo;
+        }
+        void creatFileName ()
+>>>>>>> Stashed changes
         {
             strcat(fileName,from);
             strcat(fileName,"-");

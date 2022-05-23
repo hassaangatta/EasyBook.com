@@ -34,6 +34,7 @@ class Residence{
             cout<<"Number of Guests: ";
             cin>>noOfGuests;
         }
+<<<<<<< Updated upstream
         void createFileName ()
         {
             strcat(fileName,where);
@@ -41,14 +42,26 @@ class Residence{
             FileRead();
         }
 		void creatFileName (char city[20])
+=======
+		void input (char)
         {
-            strcat(fileName,city);
+            cout<<"Enter City: ";
+            cin>>where;
+        }
+        void creatFileName ()
+>>>>>>> Stashed changes
+        {
+            strcat(fileName,where);
             strcat(fileName,".txt");
         }
         string getfilename()
         {
             return fileName;
         }
+		char * getfilename(int)
+		{
+			return fileName;
+		}
         void FileRead ()
         {
             ifstream myfile;
@@ -57,7 +70,7 @@ class Residence{
             {
                 cout<<"Error"<<endl;
             }
-            while (!myfile.eof())
+            while (myfile)
             {
                 string text[9];
                 for (int i=0;i<9;i++)

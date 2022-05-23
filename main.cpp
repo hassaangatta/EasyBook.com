@@ -48,6 +48,7 @@ int AfterLogIn(user a){
 }
 int main ()
 {
+<<<<<<< Updated upstream
     user a;
     int chk;
     char choice;
@@ -68,4 +69,33 @@ int main ()
 		a.LogIn();
 		AfterLogIn(a);
 	}
+=======
+    // Flight f;
+    // Travel *T = &f;
+    // T->input();
+    // f.creatFileName();
+    // f.FileRead();
+    // Train t;
+    // Travel *a=&t;
+    // a->input();
+    // t.creatFileName();
+    // t.FileRead();
+    // Residence r;
+    // r.input();
+    // r.creatFileName();
+    // r.FileRead();
+    admin a;
+    // a.flightadd();
+    // a.trainadd();
+    // a.busadd();
+    // a.residenceadd();
+    // a.residencedelete();
+    // a.residencePriceUpdate();
+    // a.flightdelete();
+    // a.traindelete();
+    // a.busdelete();
+    // a.flightPriceUpdate();
+    // a.trainPriceUpdate();
+    a.busPriceUpdate();
+>>>>>>> Stashed changes
 }

@@ -18,8 +18,13 @@ Tea
 Jinnah Express 
 06/23/2022
 9:00 am
+<<<<<<< Updated upstream
 7000
 8
+=======
+10000
+20
+>>>>>>> Stashed changes
 First Class
 Lunch,Tea,Dinner
 2003
@@ -30,6 +35,7 @@ Sir Syed Express
 30
 First Class
 Breakfast Lunch Dinner Tea Water AC
+<<<<<<< Updated upstream
 2004
 Jinnah
 06/23/2022
@@ -74,3 +80,5 @@ breakfast tea water non AC
 
 
 
+=======
+>>>>>>> Stashed changes
