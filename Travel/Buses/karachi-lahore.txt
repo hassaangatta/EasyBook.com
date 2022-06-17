@@ -1,8 +1,8 @@
 3000
 Fasial Movers
-04/12/2022
+06/12/2022
 4:00 pm
-6000
+5000
 8 
 Lunch,Tea
 3001
@@ -19,7 +19,6 @@ Waraich Express
 1200
 0
 Tea
-<<<<<<< Updated upstream
 3003
 waraich Express
 05/03/2022
@@ -27,18 +26,10 @@ waraich Express
 3000
 35
 Non AC refreshments
-
-
-
-
-
-
-=======
 3004
-faisal movers
-04/23/2022
-5:00 pm
-4500
-50
-refreshments
->>>>>>> Stashed changes
+Waraich Express
+07/22/2022
+3:30 pm
+2000
+45
+water
