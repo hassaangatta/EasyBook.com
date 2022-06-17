@@ -7,11 +7,14 @@
 #include <ctime>
 #include <string>
 #include <vector>
-#include "D:\EasyBook.com\Travel\travel.h"
-#include "D:\EasyBook.com\Residence\Residence.h"
-#include "D:\EasyBook.com\Travel\Flight\Flight.h"
-#include "D:\EasyBook.com\Travel\Train\Train.h"
-#include "D:\EasyBook.com\Travel\Buses\Bus.h"
+#include<windows.h>
+#include<unistd.h>
+#include<conio.h>
+//#include "D:\EasyBook.com\Travel\travel.h"
+//#include "D:\EasyBook.com\Residence\Residence.h"
+//#include "D:\EasyBook.com\Travel\Flight\Flight.h"
+//#include "D:\EasyBook.com\Travel\Train\Train.h"
+//#include "D:\EasyBook.com\Travel\Buses\Bus.h"
 using namespace std;
 
 class admin {
@@ -22,9 +25,49 @@ class admin {
     Travel *trt=&t;
     Bus b;
     public:
+    	int logIn(){
+    		string UN;
+    		char pass[13];
+    		int i;
+    		char a;
+    		cout<<"ENTER USERNAME: ";
+    		cin>>UN;
+    		cout<<"\nEnter Password  : ";
+					    for(i=0;;)//infinite loop
+					    {
+					        a=getch();//stores char typed in a
+					        if((a>='a'&&a<='z')||(a>='A'&&a<='Z')||(a>='0'&&a<='9'))
+					            //check if a is numeric or alphabet
+					        {
+					            pass[i]=a;//stores a in pass
+					            ++i;
+					            cout<<"*";
+					        }
+					        if(a=='\b'&&i>=1)//if user typed backspace
+					            //i should be greater than 1.
+					        {
+					            cout<<"\b \b";//rub the character behind the cursor.
+					            --i;
+					        }
+					        if(a=='\r')//if enter is pressed
+					        {
+					            pass[i]='\0';//null means end of string.
+					            break;//break the loop
+					        }
+					    }
+//					    cout<<UN<<endl<<pass<<endl;
+						//cout<<strcmp(pass,"easybook045")<<endl;
+					    if(UN == "Admin" && !strcmp(pass,"easybook045")){
+					    	//cout<<"con"<<endl;
+							return 1;
+					    	
+						}
+                        cout<<endl;
+				return 0;		
+		}
         void flightadd ()
         {
-            trf->input();
+            f.input(7);
             int ID;
             string name,time,rs,noOfSeats,features;
             cout<<"Enter Airplane name: ";
@@ -40,7 +83,7 @@ class admin {
             cout<<"Enter Features with space in between them : ";
             fflush(stdin);
             getline(cin,features);
-            f.creatFileName();
+            f.createFileName();
             ifstream myfile ;
             myfile.open(f.getfilename());
             if (myfile.fail())
@@ -81,7 +124,7 @@ class admin {
         }
         void trainadd ()
         {
-            trt->input();
+            t.input(7);
             int ID;
             string name,time,rs,noOfSeats,features;
             cout<<"Enter Train name: ";
@@ -97,7 +140,7 @@ class admin {
             cout<<"Enter Features with space in between them : ";
             fflush(stdin);
             getline(cin,features);
-            t.creatFileName();
+            t.createFileName();
             ifstream myfile ;
             myfile.open(t.getfilename());
             if (myfile.fail())
@@ -138,7 +181,7 @@ class admin {
         }
         void busadd ()
         {
-            b.input();
+            b.input(7);
             int ID;
             string name,time,rs,noOfSeats,features;
             cout<<"Enter Bus name: ";
@@ -154,7 +197,7 @@ class admin {
             cout<<"Enter Features with space in between them : ";
             fflush(stdin);
             getline(cin,features);
-            b.creatFileName();
+            b.createFileName();
             ifstream myfile ;
             myfile.open(b.getfilename());
             if (myfile.fail())
@@ -216,7 +259,7 @@ class admin {
             cout<<"Enter Price per night: ";
             fflush(stdin);
             getline(cin,price);
-            r.creatFileName();
+            r.createFileName();
             ifstream myfile ;
             myfile.open(r.getfilename());
             if (myfile.fail())
@@ -259,7 +302,7 @@ class admin {
         {
             r.input('c');
             string ID;
-            r.creatFileName();
+            r.createFileName();
             ifstream myfile;
             myfile.open(r.getfilename());
             if (myfile.fail())
@@ -345,8 +388,8 @@ class admin {
         }
         void flightdelete()
         {
-            f.input(7);
-            f.creatFileName(); 
+            f.input('c');
+            f.createFileName(); 
             string ID;
             ifstream myfile;
             myfile.open(f.getfilename());
@@ -433,8 +476,8 @@ class admin {
         }
         void traindelete()
         {
-            t.input(7);
-            t.creatFileName(); 
+            t.input('c');
+            t.createFileName(); 
             string ID;
             ifstream myfile;
             myfile.open(t.getfilename());
@@ -521,8 +564,8 @@ class admin {
         }
         void busdelete()
         {
-            b.input(7);
-            b.creatFileName(); 
+            b.input('c');
+            b.createFileName(); 
             string ID;
             ifstream myfile;
             myfile.open(b.getfilename());
@@ -611,7 +654,7 @@ class admin {
         {
             r.input('c');
             string ID,price;
-            r.creatFileName();
+            r.createFileName();
             ifstream myfile;
             myfile.open(r.getfilename());
             if (myfile.fail())
@@ -703,8 +746,8 @@ class admin {
         }
         void flightPriceUpdate()
         {
-            f.input(7);
-            f.creatFileName(); 
+            f.input('c');
+            f.createFileName(); 
             string ID,price;
             ifstream myfile;
             myfile.open(f.getfilename());
@@ -797,8 +840,8 @@ class admin {
         }
         void trainPriceUpdate()
         {
-            t.input(7);
-            t.creatFileName(); 
+            t.input('c');
+            t.createFileName(); 
             string ID,price;
             ifstream myfile;
             myfile.open(t.getfilename());
@@ -891,8 +934,8 @@ class admin {
         }
         void busPriceUpdate()
         {
-            b.input(7);
-            b.creatFileName(); 
+            b.input('c');
+            b.createFileName(); 
             string ID,price;
             ifstream myfile;
             myfile.open(b.getfilename());
