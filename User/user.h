@@ -9,124 +9,316 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#include "D:\EasyBook.com\Travel\travel.h"
-#include "D:\EasyBook.com\Residence\Residence.h"
-#include "D:\EasyBook.com\Travel\Flight\Flight.h"
-#include "D:\EasyBook.com\Travel\Train\Train.h"
-#include "D:\EasyBook.com\Travel\Buses\Bus.h"
+//#include "D:\EasyBook.com\Travel\travel.h"
+//#include "D:\EasyBook.com\Residence\Residence.h"
+//#include "D:\EasyBook.com\Travel\Flight\Flight.h"
+//#include "D:\EasyBook.com\Travel\Train\Train.h"
+//#include "D:\EasyBook.com\Travel\Buses\Bus.h"
 #include "Mail.h"
 using namespace std;
 
 class user {
 	string FN,LN,UserName,Email,FileName;
 	char pass[13];
-    Residence r;
-    Flight f;
-    Train t;
-    Travel *trf=&f;
-    Travel *trt=&t;
-    Bus b;
+    //Travel *trf=&f;
+    //Travel *trt=&t;
     public:
     	
 	    void trainBook(){
+	    	Train t;
+	    	string CN,cvv;
+	    	int chk;
 	    	t.input();
-	    	fstream booked;
-			fstream user;
-			string data;
-			booked.open(t.getfilename());
-			user.open(FileName,fstream::app);
-			//cout<<t.getBookId();
-			while(!booked.eof() && data != t.getBookId()){
+	    	t.createFileName();
+	    	t.FileRead();
+	    	chk = t.book();
+	    	if(chk == 1){
+	    		cout<<"ENTER CREDIT CARD NUMBER: ";
+		    	cin>>CN;
+		    	cout<<"ENTER cvv NUMBER: ";
+		    	cin>>cvv;
+		    	sleep(3);
+		    	system("cls");
+		    	cout<<"PAYMENT SUCCESSFULL...."<<endl;
+		    	fstream booked;
+				fstream user;
+				ofstream message;
+				message.open("Message.txt");
+				string data;
+				booked.open(t.getfilename());
+				user.open(FileName,fstream::app);
+				//cout<<t.getBookId();
+				while(!booked.eof() && data != t.getBookId()){
+						getline(booked,data);
+						//cout<<endl<<data<<endl;
+				}
+				//cout<<endl<<data<<endl;
+				user<<endl;
+				user<<data<<endl;
+				message<<"EASYBOOK.com"<<endl<<endl<<endl;
+				for(int i=0;i<7;i++){
 					getline(booked,data);
-					//cout<<endl<<data<<endl;
-			}
-			//cout<<endl<<data<<endl;
-			user<<endl;
-			for(int i=0;i<7;i++){
-				getline(booked,data);
-				if(i==3){
-					user<<t.getPrice()<<endl;
+					if(i==3){
+						user<<t.price<<endl;
+						//message<<t.getPrice()*t.getSeat()<<endl;
+	//					cout<<t.getPrice();
+						
+					}
+					else if(i==4)
+					{
+						user<<t.seats<<endl;
+						//message<<t.getSeat()<<endl;
+					}else
+					{
+						user<<data<<endl;
+						message<<data<<endl;
+					}
 					
 				}
-				else if(i==4)
-				{
-					user<<t.getSeat()<<endl;
-				}else
-				{
-					user<<data<<endl;
-				}
-				
+				booked.close();
+				user.close();
+				message<<"NUMBER OF SEATS: "<<t.seats<<endl;
+				message<<"FINAL BILL PAID: "<<t.price*t.seats<<endl;
+				//message<<t.getPrice()*t.getSeat();
+				message.close();		
+				fstream mailpick;
+				string mail; 
+				mailpick.open(FileName);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				ofstream receiver;
+				receiver.open("Mail.txt");
+				receiver<<mail;
+				receiver.close();
+				ofstream subject;
+				subject.open("Subject.txt");
+				subject<<"BOOKING CONFIRMED";
+				subject.close();
+				SendMail(0);
 			}
-			booked.close();
-			user.close();		
 		}
 		void flightBook(){
+			Flight f;
+	    	string CN,cvv;
+	    	int chk;
 	    	f.input();
-	    	fstream booked;
-			fstream user;
-			string data;
-			booked.open(f.getfilename());
-			user.open(FileName,fstream::app);
-			//cout<<t.getBookId();
-			while(!booked.eof() && data != f.getBookId()){
+	    	f.createFileName();
+	    	f.FileRead();
+	    	chk = f.book();
+	    	if(chk == 1){
+	    		cout<<"ENTER CREDIT CARD NUMBER: ";
+		    	cin>>CN;
+		    	cout<<"ENTER cvv NUMBER: ";
+		    	cin>>cvv;
+		    	sleep(3);
+		    	system("cls");
+		    	cout<<"PAYMENT SUCCESSFULL...."<<endl;
+		    	fstream booked;
+				fstream user;
+				ofstream message;
+				message.open("Message.txt");
+				string data;
+				booked.open(f.getfilename());
+				user.open(FileName,fstream::app);
+				//cout<<t.getBookId();
+				while(!booked.eof() && data != f.getBookId()){
+						getline(booked,data);
+						//cout<<endl<<data<<endl;
+				}
+				//cout<<endl<<data<<endl;
+				user<<endl;
+				user<<data<<endl;
+				message<<"EASYBOOK.com"<<endl<<endl<<endl;
+				for(int i=0;i<7;i++){
 					getline(booked,data);
-					//cout<<endl<<data<<endl;
-			}
-			//cout<<endl<<data<<endl;
-			user<<endl;
-			for(int i=0;i<7;i++){
-				getline(booked,data);
-				if(i==3){
-					user<<f.getPrice()<<endl;
+					if(i==3){
+						user<<f.price<<endl;
+						//message<<t.getPrice()*t.getSeat()<<endl;
+	//					cout<<t.getPrice();
+						
+					}
+					else if(i==4)
+					{
+						user<<f.seats<<endl;
+						//message<<t.getSeat()<<endl;
+					}else
+					{
+						user<<data<<endl;
+						message<<data<<endl;
+					}
 					
 				}
-				else if(i==4)
-				{
-					user<<f.getSeat()<<endl;
-				}else
-				{
-					user<<data<<endl;
-				}
-				
+				booked.close();
+				user.close();
+				message<<"NUMBER OF SEATS: "<<f.seats<<endl;
+				message<<"FINAL BILL PAID: "<<f.price*f.seats<<endl;
+				//message<<t.getPrice()*t.getSeat();
+				message.close();		
+				fstream mailpick;
+				string mail; 
+				mailpick.open(FileName);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				ofstream receiver;
+				receiver.open("Mail.txt");
+				receiver<<mail;
+				receiver.close();
+				ofstream subject;
+				subject.open("Subject.txt");
+				subject<<"BOOKING CONFIRMED";
+				subject.close();
+				SendMail(0);
 			}
-			booked.close();
-			user.close();		
 		}
 		void busBook(){
+			Bus b;
+	    	string CN,cvv;
+	    	int chk;
 	    	b.input();
-	    	fstream booked;
-			fstream user;
-			string data;
-			booked.open(b.getfilename());
-			user.open(FileName,fstream::app);
-			//cout<<t.getBookId();
-			while(!booked.eof() && data != b.getBookId()){
+	    	b.createFileName();
+	    	b.FileRead();
+	    	chk = b.book();
+	    	if(chk == 1){
+	    		cout<<"ENTER CREDIT CARD NUMBER: ";
+		    	cin>>CN;
+		    	cout<<"ENTER cvv NUMBER: ";
+		    	cin>>cvv;
+		    	sleep(3);
+		    	system("cls");
+		    	cout<<"PAYMENT SUCCESSFULL...."<<endl;
+		    	fstream booked;
+				fstream user;
+				ofstream message;
+				message.open("Message.txt");
+				string data;
+				booked.open(b.getfilename());
+				user.open(FileName,fstream::app);
+				//cout<<t.getBookId();
+				while(!booked.eof() && data != b.getBookId()){
+						getline(booked,data);
+						//cout<<endl<<data<<endl;
+				}
+				//cout<<endl<<data<<endl;
+				user<<endl;
+				user<<data<<endl;
+				message<<"EASYBOOK.com"<<endl<<endl<<endl;
+				for(int i=0;i<7;i++){
 					getline(booked,data);
-					//cout<<endl<<data<<endl;
-			}
-			//cout<<endl<<data<<endl;
-			user<<endl;
-			for(int i=0;i<7;i++){
-				getline(booked,data);
-				if(i==3){
-					user<<b.getPrice()<<endl;
+					if(i==3){
+						user<<b.price<<endl;
+						//message<<t.getPrice()*t.getSeat()<<endl;
+	//					cout<<t.getPrice();
+						
+					}
+					else if(i==4)
+					{
+						user<<b.seats<<endl;
+						//message<<t.getSeat()<<endl;
+					}else
+					{
+						user<<data<<endl;
+						message<<data<<endl;
+					}
 					
 				}
-				else if(i==4)
-				{
-					user<<b.getSeat()<<endl;
-				}else
-				{
-					user<<data<<endl;
-				}
-				
+				booked.close();
+				user.close();
+				message<<"NUMBER OF SEATS: "<<b.seats<<endl;
+				message<<"FINAL BILL PAID: "<<b.price*b.seats<<endl;
+				//message<<t.getPrice()*t.getSeat();
+				message.close();		
+				fstream mailpick;
+				string mail; 
+				mailpick.open(FileName);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				ofstream receiver;
+				receiver.open("Mail.txt");
+				receiver<<mail;
+				receiver.close();
+				ofstream subject;
+				subject.open("Subject.txt");
+				subject<<"BOOKING CONFIRMED";
+				subject.close();
+				SendMail(0);			
 			}
-			booked.close();
-			user.close();		
 		}
 		void ResidenceBook(){
+			Residence r;
+			int chk;
+			string cvv,CN;
 			r.input();
-		}
+			r.createFileName();
+			r.FileRead();
+			chk=r.book();
+			if(chk == 1){
+	    		cout<<"ENTER CREDIT CARD NUMBER: ";
+		    	cin>>CN;
+		    	cout<<"ENTER cvv NUMBER: ";
+		    	cin>>cvv;
+		    	sleep(3);
+		    	system("cls");
+		    	cout<<"PAYMENT SUCCESSFULL...."<<endl;
+				fstream booked;
+				fstream user;
+				ofstream message;
+				message.open("Message.txt");
+				string data;
+				booked.open(r.getfilename());
+				user.open(FileName,fstream::app);
+				//cout<<t.getBookId();
+				while(!booked.eof() && data != r.getBookId()){
+						getline(booked,data);
+						//cout<<endl<<data<<endl;
+				}
+				//cout<<endl<<data<<endl;
+				user<<endl;
+				user<<data<<endl;
+				message<<"EASYBOOK.com"<<endl<<endl<<endl;
+				for(int i=0;i<7;i++){
+					getline(booked,data);
+					if(i==6){
+						user<<r.price<<endl;
+						//message<<t.getPrice()*t.getSeat()<<endl;
+	//					cout<<t.getPrice();
+						
+					}
+					else
+					{
+						user<<data<<endl;
+						message<<data<<endl;
+					}
+					
+				}
+				booked.close();
+				user.close();
+				message<<"FINAL BILL PAID: "<<r.price<<endl;
+				//message<<t.getPrice()*t.getSeat();
+				message.close();		
+				fstream mailpick;
+				string mail; 
+				mailpick.open(FileName);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				getline(mailpick,mail);
+				ofstream receiver;
+				receiver.open("Mail.txt");
+				receiver<<mail;
+				receiver.close();
+				ofstream subject;
+				subject.open("Subject.txt");
+				subject<<"BOOKING CONFIRMED";
+				subject.close();
+				SendMail(0);
+			}
+			}
 		void PreviousRecord(){
 			fstream User;
 			string data;
@@ -233,7 +425,7 @@ class user {
 			User <<pass<<endl<< UserName<<endl<<FN<<" "<<LN<<endl<<Email;
 			User.close();
 		}
-		void LogIn(){
+		int LogIn(){
 				string FilePass;
 				int choice,i;
 				char a;
@@ -252,9 +444,6 @@ class user {
 							cout<<"\nEnter Password  : ";
 					    for(i=0;;)//infinite loop
 					    {
-					    	User.open(FileName.c_str());
-					    	getline(User,FilePass);
-					    	User.close();
 					        a=getch();//stores char typed in a
 					        if((a>='a'&&a<='z')||(a>='A'&&a<='Z')||(a>='0'&&a<='9'))
 					            //check if a is numeric or alphabet
@@ -275,12 +464,17 @@ class user {
 					            break;//break the loop
 					        }
 					    }
+					    	User.open(FileName.c_str());
+					    	getline(User,FilePass);
+					    	//cout<<FilePass<<endl;
+					    	User.close();
+					    	cout<<FilePass<<endl<<pass<<endl;
 							if(FilePass == pass){
 								system("cls");
 								break;
 							}else
 							{
-								cout<<"Password Doesnot matched...."<<endl;
+								cout<<endl<<"Password Doesnot matched...."<<endl;
 								cout<<"IF FORGOT PASSWORD ENTER 0: ";
 								cin>>choice;
 								if(choice == 0){
@@ -292,13 +486,13 @@ class user {
 									ofstream GmailUR;
 									Mail.open("D:\\EasyBook.com\\Mail.txt");
 									getline(User,FilePass);
-									cout<<FilePass<<endl;
+									//cout<<FilePass<<endl;
 									getline(User,FilePass);
-									cout<<FilePass<<endl;
+									//cout<<FilePass<<endl;
 									getline(User,FilePass);
-									cout<<FilePass<<endl;
+									//cout<<FilePass<<endl;
 									getline(User,FilePass);
-									cout<<FilePass<<endl;
+									//cout<<FilePass<<endl;
 									Mail<<FilePass;
 									Mail.close();
 									User.close();
@@ -321,9 +515,9 @@ class user {
 									cout<<"ENTER OTP SEND THROUGH MAIL: ";
 									cin>>InOtp;
 									if(InOtp == otp){
-										User.close();
 										ResetPass();
-										//return 0;
+										User.close();
+										return 0;
 									}
 										}
 							}
@@ -343,24 +537,90 @@ class user {
 						}
 					}
 				}
+				//User.close();
+				return 1;
 			}
 			void ResetPass(){
-				string Pass,CPass;
+				char pass[13],cpass[13];
+				int i;
 				system("cls");
+				char a;
 					cout<<"ENTER NEW PASSWORD: ";
-					cin>>Pass;
+					    for(i=0;;)//infinite loop
+					    {
+					        a=getch();//stores char typed in a
+					        if((a>='a'&&a<='z')||(a>='A'&&a<='Z')||(a>='0'&&a<='9'))
+					            //check if a is numeric or alphabet
+					        {
+					            pass[i]=a;//stores a in pass
+					            ++i;
+					            cout<<"*";
+					        }
+					        if(a=='\b'&&i>=1)//if user typed backspace
+					            //i should be greater than 1.
+					        {
+					            cout<<"\b \b";//rub the character behind the cursor.
+					            --i;
+					        }
+					        if(a=='\r')//if enter is pressed
+					        {
+					            pass[i]='\0';//null means end of string.
+					            break;//break the loop
+					        }
+					    }
 					cout<<"CONFIRM PASSWORD: ";
-					cin>>CPass;
+					    for(i=0;;)//infinite loop
+					    {
+					        a=getch();//stores char typed in a
+					        if((a>='a'&&a<='z')||(a>='A'&&a<='Z')||(a>='0'&&a<='9'))
+					            //check if a is numeric or alphabet
+					        {
+					            cpass[i]=a;//stores a in pass
+					            ++i;
+					            cout<<"*";
+					        }
+					        if(a=='\b'&&i>=1)//if user typed backspace
+					            //i should be greater than 1.
+					        {
+					            cout<<"\b \b";//rub the character behind the cursor.
+					            --i;
+					        }
+					        if(a=='\r')//if enter is pressed
+					        {
+					            cpass[i]='\0';//null means end of string.
+					            break;//break the loop
+					        }
+					    }
 					fstream User;
+					ofstream temp;
+					temp.open("temp.txt");
 					User.open(FileName);
-					if(User.fail()){
-						cout<<"Error"<<endl;
+					if(pass != cpass){
+						cout<<"TWO PASSWORDS DOESNOT MATCHED..."<<endl;
 					}else
 					{
-						User.seekg(0);
-						User<<Pass;
-						cout<<"PASSWORD SUCCESSFULLY CHANGED..."<<endl;			
+						string line;
+						temp<<pass<<endl;
+						getline(User,line);
+						//temp<<line<<endl;
+						getline(User,line);
+						temp<<line<<endl;
+						getline(User,line);
+						temp<<line<<endl;
+						getline(User,line);
+						temp<<line<<endl;
+						//User.close();
+						temp.close();
+						User.close();
+						ifstream tempo;
+						ofstream per;
+						tempo.open("temp.txt");
+						per.open(FileName);
+						while(!tempo.eof()){
+							getline(tempo,line);
+							per<<line<<endl;
+						}
+						cout<<"PASSWORD SUCCESSFULLY CHANGES...."<<endl;
 					}
 		}
-											
 };
