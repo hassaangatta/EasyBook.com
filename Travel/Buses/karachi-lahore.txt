@@ -26,10 +26,3 @@ waraich Express
 3000
 35
 Non AC refreshments
-3004
-Waraich Express
-07/22/2022
-3:30 pm
-2000
-45
-water
